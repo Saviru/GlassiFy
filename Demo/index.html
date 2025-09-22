@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GlassiFy Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Regular script, not a module -->
+</head>
+<body>
+    <h1 class="title">GlassiFy Demo</h1>
+    <h2 class="title">Try dragging these elements</h2>
+
+    <button type="button" onclick="document.body.style.backgroundImage = 'url(R.jpg)'">Image 1</button>
+    <button type="button" onclick="document.body.style.backgroundImage = 'url(G.jpg)'">Image 2</button>
+
+    <glassi-fy></glassi-fy>
+
+    <!-- Content goes here -->
+    <div class="container">
+        <div class="box">
+            <div id="mydiv" class="glassify"></div>
+        </div>
+        <div class="box">
+            <div id="mydiv2" class="glassify"></div>
+        </div><br><br>
+        <div class="box">
+            <div id="mydiv3" class="glassify"></div>
+        </div>
+    </div>
+
+    <script src="../glassify.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url("R.jpg") no-repeat center center/cover;
+    margin: 0;
+    padding: 20px;
+    padding-left: 100px;
+}
+
+.ggg {
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+}
+
+.title {
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    background: #0000004f;
+    width: max-content;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mydiv {
+    position: absolute;
+    z-index: 9;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    cursor: move;
+}
+
+#mydiv2 {
+    position: absolute;
+    z-index: 9;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    cursor: move;
+}
+
+#mydiv3 {
+    position: absolute;
+    z-index: 9;
+    text-align: center;
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+    cursor: move;
+}
