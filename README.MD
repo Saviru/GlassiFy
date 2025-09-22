@@ -9,10 +9,6 @@ GlassiFy is a lightweight JavaScript which aspired by Apple's new Liquid Glass d
 - Customizable: Adjust the blur, transparency, and other properties to fit your design needs.
 - Lightweight: Minimal impact on performance and loading times.
 
-## Demo
-
-<img src="demo.gif" alt="GlassiFy Demo" width="600"/>
-
 
 ### Usage   
 1. **Include the Library**: Add the following script tag to your HTML file to include the GlassiFy library via CDN:
