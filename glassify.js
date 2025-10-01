@@ -19,13 +19,11 @@ class GlassiFy extends HTMLElement {
         const svg = document.createElement('svg');
         svg.style.display = 'none';
         svg.innerHTML = `
-        <svg style="display: none;">
         <filter id="displacementFilter">
             <feTurbulence type="turbulence" baseFrequency="${freq}" numOctaves="${octaves}" result="turbulence" />
             <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="${scale}" 
                              xChannelSelector="R" yChannelSelector="G" />
         </filter>
-        </svg>
         `;
 
         const style = document.createElement('style');
