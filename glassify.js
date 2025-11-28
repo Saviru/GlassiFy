@@ -5,9 +5,14 @@ class GlassiFy extends HTMLElement {
         const wrapper = document.createElement('div');
 
         const mode = this.getAttribute('mode') || 'default';
-        const scale = parseInt(this.getAttribute('scale')) || 500;
-        const blur = parseInt(this.getAttribute('blur')) || 3.5;
-        const brightness = parseFloat(this.getAttribute('brightness')) || 1.5;
+        const isMode = mode === 'super'
+
+        const freq = parseFloat(this.getAttribute('frequency')) || 0.01;
+        const octaves = parseInt(this.getAttribute('octaves')) || 3;
+        
+        const scale = parseInt(this.getAttribute('scale')) || (isMode ? 45 : 300);
+        const blur = parseInt(this.getAttribute('blur')) || (isMode ? 3 : 3.5);
+        const brightness = parseFloat(this.getAttribute('brightness')) || (isMode ? 1.3 : 1.5);
 
 
         // Add the content
