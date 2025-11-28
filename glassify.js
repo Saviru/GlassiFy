@@ -46,7 +46,7 @@ class GlassiFy extends HTMLElement {
 
         const style = document.createElement('style');
         style.textContent = `
-.glassify{border:#ffffffbd solid 1px;filter:drop-shadow(-8px -10px 46px #d1d1d194);box-shadow:inset 3px 3px 3px -1px #ffffff94, inset -3px -3px 3px -1px #4444449c;backdrop-filter:brightness(${brightness}) blur(${blur}px) url(#displacementFilter);}glassi-fi{display: none;}
+.glassify{border:#d1d1d170 solid 1px;filter:drop-shadow(-8px -10px 46px #d1d1d194);box-shadow:inset 3px 3px 3px -1px #ffffff94, inset -3px -3px 3px -1px #4444449c;backdrop-filter:brightness(${brightness}) blur(${blur}px) url(#displacementFilter);}glassi-fi{display: none;}
         `;
 
         shadow.appendChild(wrapper);
