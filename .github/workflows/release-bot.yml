@@ -31,7 +31,7 @@ jobs:
           fi
           
           echo "Processing Version: $VERSION"
-
+          
           TARGET_DIR="cdn/${VERSION}"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "TARGET_DIR=$TARGET_DIR" >> $GITHUB_ENV
@@ -44,11 +44,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release download ${{ env.VERSION }} \
-            --dir "cdn" \
-            --pattern "*.js" || echo "No JS files found for root cdn"
+            --dir ${{ env.TARGET_DIR }} \
+            --pattern "*.js"
 
           gh release download ${{ env.VERSION }} \
-            --dir ${{ env.TARGET_DIR }} \
+            --dir "cdn" \
             --pattern "*.js"
 
       - name: Generate JSON Info
@@ -56,18 +56,12 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           JSON_FILE="release_info.json"
-
+          
           gh release view ${{ env.VERSION }} \
             --json tagName,publishedAt,url,body \
-            --template '
-            {
-              "version": "{{.tagName}}",
-              "date": "{{.publishedAt}}",
-              "url": "{{.url}}",
-              "description": {{.body | json}}
-            }' > $JSON_FILE
+            --jq '{version: .tagName, date: .publishedAt, url: .url, description: .body}' > $JSON_FILE
             
-          cat $JSON_FILE # Print to console for debugging
+          cat $JSON_FILE
 
       - name: Commit and Push
         run: |
@@ -81,10 +75,6 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "Archive binaries and info for release ${{ env.VERSION }}"
-            
-            # Pull latest changes to avoid conflicts (good practice on main)
             git pull origin main --rebase
-            
-            # Push specifically to main
             git push origin main
           fi
