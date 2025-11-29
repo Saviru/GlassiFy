@@ -47,6 +47,10 @@ jobs:
             --dir ${{ env.TARGET_DIR }} \
             --pattern "*.js"
 
+          gh release download ${{ env.VERSION }} \
+            --dir "cdn" \
+            --pattern "*.js"
+
       - name: Generate JSON Info
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
