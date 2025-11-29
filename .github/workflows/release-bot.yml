@@ -41,7 +41,7 @@ jobs:
 
       - name: Generate JSON Info
         run: |
-          JSON_FILE="${{ env.TARGET_DIR }}/release_info.json"
+          JSON_FILE="release_info.json"
 
           jq -n \
             --arg v "${{ env.VERSION }}" \

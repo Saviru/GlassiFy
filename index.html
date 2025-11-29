@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="Demo/buttons.css">
 </head>
 <body>
+    <script src="Demo/auto.js"></script>
     <glassi-fy></glassi-fy>
 
     <div class="background-glows">
@@ -21,7 +22,7 @@
 
     <nav class="glassify">
         <div class="logo">
-            <span onclick="switchTab('home')">GlassiFy<sup style="color: var(--text-muted);">&nbsp;{version}</sup></span>
+            <span onclick="switchTab('home')">GlassiFy&nbsp;<sup class="dataVer" style="color: var(--text-muted);">{version}</sup></span>
             <div class="mode-toggle-group">
                 <input type="checkbox" id="modeSwitch" class="hidden-toggle" onchange="toggleSuperMode(this)">
                     
@@ -139,9 +140,9 @@
 
             <div class="features-grid" style="grid-template-columns: 1fr; gap: 30px;">
                 <div class="glass-panel" style="padding: 40px;">
-                    <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">GlassiFy <span id="dataVer">{version}</span></h2>
-                    <p style="color: var(--text-muted);">{release-date}</p><br>
-                    <p>{description}</p>
+                    <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">GlassiFy <span class="dataVer">{version}</span></h2>
+                    <p id="rdate" style="color: var(--text-muted);">{release-date}</p><br>
+                    <p>Changelog: <a id="rlink" href="">View here</a></p>
                 </div>
                 <div class="glass-panel" style="padding: 40px;">
                     <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">Step 1 - Include the Library</h2>
@@ -150,7 +151,7 @@
                     <div style="margin-bottom: 20px;">
                         <span style="font-size: 0.85rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">Option A: Official CDN</span>
                         <div class="codespc">
-                            <span style="color: #e06c75;">&lt;script</span> <span style="color: #d19a66;">src</span>=<span style="color: #98c379;">"https://{domain}/cdn/{version}/glassify.js"</span><span style="color: #e06c75;">&gt;&lt;/script&gt;</span>
+                            <span style="color: #e06c75;">&lt;script</span> <span style="color: #d19a66;">src</span>=<span id="cdnlink" style="color: #98c379;">"https://glassify.saviru.me/cdn/{version}/glassify.js"</span><span style="color: #e06c75;">&gt;&lt;/script&gt;</span>
                         </div>
                     </div>
 
