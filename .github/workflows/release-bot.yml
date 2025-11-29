@@ -46,6 +46,7 @@ jobs:
           gh release download ${{ env.VERSION }} \
             --dir ${{ env.TARGET_DIR }} \
             --pattern "*.js"
+            --skip-existing
 
       - name: Add Latest Release Binaries
         env:
@@ -54,6 +55,7 @@ jobs:
           gh release download ${{ env.VERSION }} \
             --dir "cdn" \
             --pattern "*.js"
+            --clobber
 
       - name: Generate JSON Info
         env:
@@ -64,6 +66,7 @@ jobs:
           gh release view ${{ env.VERSION }} \
             --json tagName,publishedAt,url,body \
             --jq '{version: .tagName, date: .publishedAt, url: .url, description: .body}' > $JSON_FILE
+            
             
           cat $JSON_FILE
 
