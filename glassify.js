@@ -11,8 +11,8 @@ class GlassiFy extends HTMLElement {
         const octaves = parseInt(this.getAttribute('octaves')) || 3;
         
         const scale = parseInt(this.getAttribute('scale')) || (isMode ? 45 : 300);
-        const blur = parseInt(this.getAttribute('blur')) || (isMode ? 3 : 3.5);
-        const brightness = parseFloat(this.getAttribute('brightness')) || (isMode ? 1.3 : 1.5);
+        const blur = parseInt(this.getAttribute('blur')) || (isMode ? 4 : 5);
+        const brightness = parseFloat(this.getAttribute('brightness')) || (isMode ? 1 : 1);
 
 
         // Add the content
@@ -46,7 +46,7 @@ class GlassiFy extends HTMLElement {
 
         const style = document.createElement('style');
         style.textContent = `
-.glassify{border:#d1d1d170 solid 1px;filter:drop-shadow(-8px -10px 46px #d1d1d194);box-shadow:inset 3px 3px 3px -1px #ffffff94, inset -3px -3px 3px -1px #4444449c;backdrop-filter:brightness(${brightness}) blur(${blur}px) url(#displacementFilter);}glassi-fi{display: none;}
+.glassify{border:#d1d1d170 solid 1px;filter:drop-shadow(-8px -10px 46px #d1d1d152);box-shadow:inset 3px 3px 3px -1px #ffffff50, inset -3px -3px 3px -1px #44444469;backdrop-filter:brightness(${brightness}) blur(${blur}px) url(#displacementFilter);}glassi-fi{display: none;}
         `;
 
         shadow.appendChild(wrapper);

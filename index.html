@@ -1,34 +1,130 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>GlassiFy Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlassiFy - Liquid Glass Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="Demo/style.css">
-    <!-- Regular script, not a module -->
 </head>
 <body>
-    <h1 class="title">GlassiFy Demo</h1>
-    <h2 class="title">Try dragging these elements</h2>
+    <glassi-fy></glassi-fy>
 
-    <button type="button" onclick="document.body.style.backgroundImage = 'url(Demo/R.jpg)'">Image 1</button>
-    <button type="button" onclick="document.body.style.backgroundImage = 'url(Demo/G.jpg)'">Image 2</button>
-    <button type="button" onclick='window.location.href="https://github.com/Saviru/GlassiFy"'>Source Code</button>
-
-    <glassi-fy ></glassi-fy>
-
-    <!-- Content goes here -->
-    <div class="container">
-        <div class="box">
-            <div id="mydiv" class="glassify"></div>
-        </div>
-        <div class="box">
-            <div id="mydiv2" class="glassify"></div>
-        </div><br><br>
-        <div class="box">
-            <div id="mydiv3" class="glassify"></div>
-        </div>
+    <div class="background-glows">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
     </div>
 
-    <script src="glassify.js"></script>
+    <nav class="glassify">
+        <div class="logo">
+            <span onclick="switchTab('home')">GlassiFy</span>
+            <div class="mode-toggle-group">
+                <input type="checkbox" id="modeSwitch" class="hidden-toggle" onchange="toggleSuperMode(this)">
+                    
+                <label for="modeSwitch" class="glass-switch-ui"></label>
+                    
+                <div class="label-container">
+                    <span class="status-text text-default">Default</span>
+                    <span class="status-text text-super">Super</span>
+                </div>
+            </div>
+        </div>
+        
+        <ul class="nav-links">
+            <li><button class="nav-btn active" onclick="switchTab('home')" id="btn-home">Home</button></li>
+            <li><button class="nav-btn" onclick="switchTab('demo')" id="btn-demo">Demo</button></li>
+            <li><a href="https://github.com/Saviru/GlassiFy" class="github-icon" target="_blank"><i class="fab fa-github"></i></a></li>
+        </ul>
+    </nav>
+
+    <section id="page-home" class="page-section active-page">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <h1>Liquid Glass Effects for Your Web</h1>
+                        <p>A lightweight JavaScript library inspired by modern liquid glass effect. Transform your UI elements into sleek, frosted liquid glass components instantly.</p>
+                        <button onclick="switchTab('demo')" class="btn btn-primary">Try the Demo</button>
+                    </div>
+                    <div class="gledu">
+                        <div class="glbox">
+                            <div class="glsqu glassify" style="--gl:0;"></div>
+                            <div class="glsqu glassify" style="--gl:1;"></div>
+                            <div class="glsqu glassify" style="--gl:2;"></div>
+                            <div class="glsqu glassify" style="--gl:3;"></div>
+                            <div class="glsqu glassify" style="--gl:4;"></div>
+                            <div class="glcont glassify">
+                                <div class="gltxedu">
+                                    GlassiFy
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card glass-panel">
+                    <div class="icon-box"><i class="fas fa-feather-alt"></i></div>
+                    <h3>Lightweight</h3>
+                    <p>Optimized for performance with minimal impact on load times.</p>
+                </div>
+                <div class="feature-card glass-panel">
+                    <div class="icon-box"><i class="fas fa-layer-group"></i></div>
+                    <h3>Real-time Effects</h3>
+                    <p>Dynamic backdrop filters that react to the content behind them.</p>
+                </div>
+                <div class="feature-card glass-panel">
+                    <div class="icon-box"><i class="fas fa-mouse-pointer"></i></div>
+                    <h3>Interactive</h3>
+                    <p>Elements that respond to user input and movement naturally.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 50px; text-align: center; padding-bottom: 50px; color: var(--text-muted); font-size: 0.9rem;">
+                <p>Copyright © 2025 Saviru Kashmira Atapattu. MIT License.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="page-demo" class="page-section">
+        <div class="container">
+            <div class="demo-header">
+                <h1>Interactive Playground</h1>
+                <p style="color: var(--text-muted);">Drag the elements to see the liquid glass effect in action. (Demo)</p>
+            </div>
+
+            <div class="demo-controls">
+                <button class="control-btn active" onclick="changeBg('city')">City Lights</button>
+                <button class="control-btn" onclick="changeBg('nature')">Nature</button>
+                <button class="control-btn" onclick="changeBg('neon')">Neon Abstract</button>
+                <button class="control-btn" onclick="resetPositions()"><i class="fas fa-sync-alt"></i> Reset</button>
+            </div>
+
+            <div class="playground-container" id="playground" style="background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2144&auto=format&fit=crop');">
+                <div class="bg-text">GLASSIFY</div>
+
+                <div class="draggable glass-card glassify" id="drag-1">
+                    <h3>Glass Card</h3>
+                    <p>Drag me over the background to see the liquid glass effect.</p>
+                    <div style="margin-top: auto; width: 100%; height: 6px; background: rgba(255,255,255,0.2); border-radius: 3px;">
+                        <div style="width: 60%; height: 100%; background: var(--primary); border-radius: 3px;"></div>
+                    </div>
+                </div>
+
+                <div class="draggable glass-circle glassify" id="drag-2">
+                    <i class="fas fa-cube" style="font-size: 2rem; opacity: 0.8;"></i>
+                </div>
+
+                <div class="draggable glass-square glassify" id="drag-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="Demo/glassifydev.js"></script>
     <script src="Demo/index.js"></script>
 </body>
 </html>
