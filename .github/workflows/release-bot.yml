@@ -32,8 +32,12 @@ jobs:
         run: |
           # Download assets to the specific version folder
           gh release download ${{ env.VERSION }} \
+            --dir "cdn" \
+            --pattern "*.js"
+
+          gh release download ${{ env.VERSION }} \
             --dir ${{ env.TARGET_DIR }} \
-            --pattern "*"
+            --pattern "*.js"
 
       - name: Generate JSON Info
         run: |
