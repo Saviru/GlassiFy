@@ -1,0 +1,57 @@
+name: Archive Release Binaries & Info
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  archive-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Define Variables
+        id: vars
+        run: |
+          VERSION="${{ github.event.release.tag_name }}"
+          TARGET_DIR="cdn/${VERSION}"
+          
+          echo "TARGET_DIR=$TARGET_DIR" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Create Version Directory
+        run: mkdir -p ${{ env.TARGET_DIR }}
+
+      - name: Download Release Binaries
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Download assets to the specific version folder
+          gh release download ${{ env.VERSION }} \
+            --dir ${{ env.TARGET_DIR }} \
+            --pattern "*"
+
+      - name: Generate JSON Info
+        run: |
+          JSON_FILE="${{ env.TARGET_DIR }}/release_info.json"
+
+          jq -n \
+            --arg v "${{ env.VERSION }}" \
+            --arg d "${{ github.event.release.body }}" \
+            --arg u "${{ github.event.release.html_url }}" \
+            --arg t "${{ github.event.release.published_at }}" \
+            '{version: $v, date: $t, url: $u, description: $d}' > $JSON_FILE
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add ${{ env.TARGET_DIR }}
+          
+          git commit -m "Archive binaries and info for release ${{ env.VERSION }}"
+          git push
