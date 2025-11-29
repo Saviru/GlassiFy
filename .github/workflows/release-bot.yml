@@ -3,7 +3,6 @@ name: Archive Release Binaries & Info
 on:
   release:
     types: [published]
-    
   workflow_dispatch:
 
 permissions:
@@ -15,15 +14,27 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
-      - name: Define Variables
+      - name: Define Version
         id: vars
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VERSION="${{ github.event.release.tag_name }}"
-          TARGET_DIR="cdn/${VERSION}"
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "Manual trigger detected. Fetching latest release tag..."
+            VERSION=$(gh release view --json tagName --jq .tagName)
+          else
+            VERSION="${{ github.event.release.tag_name }}"
+          fi
           
-          echo "TARGET_DIR=$TARGET_DIR" >> $GITHUB_ENV
+          echo "Processing Version: $VERSION"
+
+          TARGET_DIR="cdn/${VERSION}"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "TARGET_DIR=$TARGET_DIR" >> $GITHUB_ENV
 
       - name: Create Version Directory
         run: mkdir -p ${{ env.TARGET_DIR }}
@@ -32,25 +43,31 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Download assets to the specific version folder
           gh release download ${{ env.VERSION }} \
             --dir "cdn" \
-            --pattern "*.js"
+            --pattern "*.js" || echo "No JS files found for root cdn"
 
           gh release download ${{ env.VERSION }} \
             --dir ${{ env.TARGET_DIR }} \
             --pattern "*.js"
 
       - name: Generate JSON Info
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           JSON_FILE="release_info.json"
 
-          jq -n \
-            --arg v "${{ env.VERSION }}" \
-            --arg d "${{ github.event.release.body }}" \
-            --arg u "${{ github.event.release.html_url }}" \
-            --arg t "${{ github.event.release.published_at }}" \
-            '{version: $v, date: $t, url: $u, description: $d}' > $JSON_FILE
+          gh release view ${{ env.VERSION }} \
+            --json tagName,publishedAt,url,body \
+            --template '
+            {
+              "version": "{{.tagName}}",
+              "date": "{{.publishedAt}}",
+              "url": "{{.url}}",
+              "description": {{.body | json}}
+            }' > $JSON_FILE
+            
+          cat $JSON_FILE # Print to console for debugging
 
       - name: Commit and Push
         run: |
@@ -58,6 +75,16 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add ${{ env.TARGET_DIR }}
+          git add release_info.json
           
-          git commit -m "Archive binaries and info for release ${{ env.VERSION }}"
-          git push
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Archive binaries and info for release ${{ env.VERSION }}"
+            
+            # Pull latest changes to avoid conflicts (good practice on main)
+            git pull origin main --rebase
+            
+            # Push specifically to main
+            git push origin main
+          fi
