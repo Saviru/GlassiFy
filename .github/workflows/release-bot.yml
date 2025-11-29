@@ -45,7 +45,7 @@ jobs:
         run: |
           gh release download ${{ env.VERSION }} \
             --dir ${{ env.TARGET_DIR }} \
-            --pattern "*.js"
+            --pattern "*.js" \
             --skip-existing
 
       - name: Add Latest Release Binaries
@@ -54,7 +54,7 @@ jobs:
         run: |
           gh release download ${{ env.VERSION }} \
             --dir "cdn" \
-            --pattern "*.js"
+            --pattern "*.js" \
             --clobber
 
       - name: Generate JSON Info
