@@ -86,3 +86,18 @@ function resetPositions() {
         item.yOffset = 0;
     });
 }
+
+function toggleTheme() {
+  const body = document.body;
+  body.classList.toggle('light-mode');
+            
+  const icon = document.querySelector('#theme-toggle i');
+
+  if (body.classList.contains('light-mode')) {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+  } else {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+  }
+}

@@ -14,8 +14,6 @@ class GlassiFy extends HTMLElement {
         const blur = parseInt(this.getAttribute('blur')) || (isMode ? 4 : 5);
         const brightness = parseFloat(this.getAttribute('brightness')) || (isMode ? 1 : 1);
 
-
-        // Add the content
         wrapper.innerHTML = `
             <!-- GlassiFy Component -->
         `;
@@ -55,7 +53,6 @@ class GlassiFy extends HTMLElement {
     }
 }
 
-// Define the custom element
 customElements.define('glassi-fy', GlassiFy);
 
 
