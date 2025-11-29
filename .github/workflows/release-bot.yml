@@ -47,6 +47,10 @@ jobs:
             --dir ${{ env.TARGET_DIR }} \
             --pattern "*.js"
 
+      - name: Add Latest Release Binaries
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
           gh release download ${{ env.VERSION }} \
             --dir "cdn" \
             --pattern "*.js"
