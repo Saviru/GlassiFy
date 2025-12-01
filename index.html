@@ -1,44 +1,90 @@
+<!--
+ ____    ___                                ____                  ___         __     
+/\  _`\ /\_ \                            __/\  _`\              /'___`\     /'__`\   
+\ \ \L\_\//\ \      __      ____    ____/\_\ \ \L\_\__  __     /\_\ /\ \   /\ \/\ \  
+ \ \ \L_L \ \ \   /'__`\   /',__\  /',__\/\ \ \  _\/\ \/\ \    \/_/// /__  \ \ \ \ \ 
+  \ \ \/, \\_\ \_/\ \L\.\_/\__, `\/\__, `\ \ \ \ \/\ \ \_\ \      // /_\ \__\ \ \_\ \
+   \ \____//\____\ \__/.\_\/\____/\/\____/\ \_\ \_\ \/`____ \    /\______/\_\\ \____/
+    \/___/ \/____/\/__/\/_/\/___/  \/___/  \/_/\/_/  `/___/> \   \/_____/\/_/ \/___/ 
+                                                        /\___/                       
+                                                        \/__/                     
+
+
+GlassiFy 2.0.2511 - https://glassify.saviru.me
+===========================================================
+An open-source and a lightweight Web Component for creating liquid glass effects with dynamic displacement.
+================================================
+
+
+
+© 2025 Saviru Kashmira Atapattu. MIT License.
+Website: https://saviru.me
+GitHub: https://github.com/saviru
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlassiFy - Liquid Glass Effects</title>
+    <meta name="robots" content="index, follow">
+    
+    <meta name="description" content="GlassiFy - An open-source and lightweight JavaScript library for creating liquid glass effects on your web elements.">
+    <meta name="keywords" content="GlassiFy, Liquid Glass, Glassmorphism, JavaScript Library, Web Component, Frosted Glass Effect, UI Effects, Frontend Development">
+    <meta name="author" content="Saviru Kashmira Atapattu">
+    <title>GlassiFy - Liquid Glass Effects Library</title>
+    <link rel="shortcut icon" href="demo/logo/GlassiFy.ico" type="image/x-icon">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="Demo/style.css">
-    <link rel="stylesheet" href="Demo/buttons.css">
+
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="demo/style.css">
+    <link rel="stylesheet" href="demo/buttons.css">
 </head>
 <body>
-    <script src="Demo/auto.js"></script>
+    <!-- Auto-load version info -->
+    <script src="demo/auto.js"></script>
+
+    <!-- GlassiFy Library Initialization -->
     <glassi-fy></glassi-fy>
 
+    <!-- Background Glow Effects -->
     <div class="background-glows">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
     </div>
 
+    <!-- Navigation Bar -->
     <nav class="glassify">
+        <!-- Logo and Mode Toggle -->
         <div class="logo">
-            <span onclick="switchTab('home')">GlassiFy&nbsp;<sup class="dataVer" style="color: var(--text-muted);">{version}</sup></span>
+            <span onclick="switchTab('home')">
+                GlassiFy&nbsp;<sup class="dataVer" style="color: var(--text-muted);">{version}</sup>
+            </span>
+
+            <!-- Default/Super Mode Toggle Switch -->
             <div class="mode-toggle-group">
                 <input type="checkbox" id="modeSwitch" class="hidden-toggle" onchange="toggleSuperMode(this)">
-                    
                 <label for="modeSwitch" class="glass-switch-ui"></label>
-                    
                 <div class="label-container">
                     <span class="status-text text-default">Default</span>
                     <span class="status-text text-super">Super</span>
                 </div>
             </div>
         </div>
-        
+
+        <!-- Mobile Menu Toggle Button -->
         <button class="menu-toggle" id="menuToggle" onclick="toggleMobileMenu()">
             <i class="fas fa-bars"></i>
         </button>
-        
+
+        <!-- Navigation Links -->
         <ul class="nav-links" id="navLinks">
             <li><button class="nav-btn active" onclick="switchTab('home'); closeMobileMenu();" id="btn-home">Home</button></li>
             <li><button class="nav-btn" onclick="switchTab('demo'); closeMobileMenu();" id="btn-demo">Demo</button></li>
@@ -48,13 +94,17 @@
         </ul>
     </nav>
 
+    <!-- Home Page -->
     <section id="page-home" class="page-section active-page">
         <div class="container">
+
+            <!-- Hero Section -->
             <div class="hero">
                 <div class="hero-grid">
+                    <!-- Hero Content -->
                     <div class="hero-content">
                         <h1>Liquid Glass Effects for Your Web</h1>
-                        <p>A lightweight JavaScript library inspired by modern liquid glass effect. Transform your UI elements into sleek, frosted liquid glass components instantly.</p>
+                        <p>An open-source and a lightweight JavaScript library inspired by modern liquid glass effect. Transform your UI elements into sleek, frosted liquid glass components instantly.</p>
                         <div id="btnArea">
                             <button onclick="switchTab('demo')" class="btn btn-primary">Try the Demo</button>
                             <div class="spbuttons">
@@ -62,6 +112,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Animated Glass Elements -->
                     <div class="gledu">
                         <div class="glbox">
                             <div class="glsqu glassify" style="--gl:0;"></div>
@@ -70,16 +122,15 @@
                             <div class="glsqu glassify" style="--gl:3;"></div>
                             <div class="glsqu glassify" style="--gl:4;"></div>
                             <div class="glcont glassify">
-                                <div class="gltxedu">
-                                    GlassiFy
-                                </div>
+                                <div class="gltxedu">GlassiFy</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="features-grid">
+            <!-- Features Grid -->
+            <div class="features-card-grid">
                 <div class="feature-card glass-panel">
                     <div class="icon-box"><i class="fas fa-feather-alt"></i></div>
                     <h3>Lightweight</h3>
@@ -96,17 +147,22 @@
                     <p>Two liquid glass effects to choose from. Customize them to fit your design.</p>
                 </div>
             </div>
+
         </div>
         <br>
     </section>
 
+    <!-- Demo Page -->
     <section id="page-demo" class="page-section">
         <div class="container">
+
+            <!-- Demo Header -->
             <div class="demo-header">
                 <h1>Interactive Playground</h1>
                 <p style="color: var(--text-muted);">Drag the elements to see the liquid glass effect in action. (Demo)</p>
             </div>
 
+            <!-- Background Selection Controls -->
             <div class="demo-controls">
                 <button class="control-btn active" onclick="changeBg('city')">City Lights</button>
                 <button class="control-btn" onclick="changeBg('nature')">Nature</button>
@@ -114,9 +170,11 @@
                 <button class="control-btn" onclick="resetPositions()"><i class="fas fa-sync-alt"></i> Reset</button>
             </div>
 
+            <!-- Playground Container with Draggable Elements -->
             <div class="playground-container" id="playground" style="background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2144&auto=format&fit=crop');">
                 <div class="bg-text">GLASSIFY</div>
 
+                <!-- Draggable Glass Card -->
                 <div class="draggable glass-card glassify" id="drag-1">
                     <h3>Glass Card</h3>
                     <p>Drag me over the background to see the liquid glass effect.</p>
@@ -125,33 +183,48 @@
                     </div>
                 </div>
 
+                <!-- Draggable Glass Circle -->
                 <div class="draggable glass-circle glassify" id="drag-2">
                     <i class="fas fa-cube" style="font-size: 2rem; opacity: 0.8;"></i>
                 </div>
 
+                <!-- Draggable Glass Square -->
                 <div class="draggable glass-square glassify" id="drag-3"></div>
             </div>
+
         </div>
         <br>
     </section>
-    
+
+    <!-- Documentation Page -->
     <section id="page-docs" class="page-section">
         <div class="container">
+
+            <!-- Docs Header -->
             <div class="demo-header">
                 <h1>GlassiFy Documentation</h1>
                 <p style="color: var(--text-muted);">Comprehensive guide to implementing GlassiFy Liquid Glass Effects on your website.</p>
             </div>
 
             <div class="features-grid" style="grid-template-columns: 1fr; gap: 30px;">
+
+                <!-- Version Info Panel -->
                 <div class="glass-panel" style="padding: 40px;">
-                    <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">GlassiFy <span class="dataVer">{version}</span></h2>
+                    <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
+                        GlassiFy <span class="dataVer">{version}</span>
+                    </h2>
                     <p id="rdate" style="color: var(--text-muted);">{release-date}</p><br>
                     <p>Changelog: <a id="rlink" href="">View here</a></p>
                 </div>
+
+                <!-- Step 1: Include Library -->
                 <div class="glass-panel" style="padding: 40px;">
-                    <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">Step 1 - Include the Library</h2>
+                    <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
+                        Step 1 - Include the Library
+                    </h2>
                     <p style="margin-bottom: 15px;">Add the script tag to your HTML file. You can use the official CDN or your self-hosted version.</p>
-                    
+
+                    <!-- Option A: CDN -->
                     <div style="margin-bottom: 20px;">
                         <span style="font-size: 0.85rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">Option A: Official CDN</span>
                         <div class="codespc">
@@ -159,6 +232,7 @@
                         </div>
                     </div>
 
+                    <!-- Option B: Self-Hosted -->
                     <div>
                         <span style="font-size: 0.85rem; color: var(--secondary); font-weight: 700; text-transform: uppercase;">Option B: Self-Hosted</span>
                         <div class="codespc">
@@ -168,10 +242,14 @@
                     </div>
                 </div>
 
+                <!-- Step 2: Initialize Library -->
                 <div class="glass-panel" style="padding: 40px;">
-                    <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">Step 2 - Initialize Library</h2>
+                    <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
+                        Step 2 - Initialize Library
+                    </h2>
                     <p style="margin-bottom: 15px;">Use the <code>glassi-fy</code> custom element in the body of your HTML to apply the liquid glass effect.</p>
 
+                    <!-- Default Mode -->
                     <div style="margin-bottom: 20px;">
                         <span style="font-size: 0.85rem; color: var(--primary); font-weight: 700; text-transform: uppercase;">Default Mode</span>
                         <div class="codespc">
@@ -179,6 +257,7 @@
                         </div>
                     </div>
 
+                    <!-- Super Mode -->
                     <div>
                         <span style="font-size: 0.85rem; color: var(--secondary); font-weight: 700; text-transform: uppercase;">Super Mode</span>
                         <div class="codespc">
@@ -186,6 +265,7 @@
                         </div>
                     </div>
 
+                    <!-- Configuration Attributes Table -->
                     <h3 style="color: var(--text-main); margin-top: 20px; margin-bottom: 10px;">Configuration Attributes</h3>
                     <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">You can customize the effect using attributes inside the opening tag. Do not add content between the tags.</p>
 
@@ -238,21 +318,25 @@
                         </tbody>
                     </table>
 
+                    <!-- Example Configuration -->
                     <div style="margin-top: 20px;">
                         <span style="font-size: 0.85rem; color: var(--text-muted);">Example Configuration:</span>
                         <div class="codespc">
-                            <span style="color: #e06c75;">&lt;glassi-fy</span> 
-                            <span style="color: #d19a66;">scale</span>=<span style="color: #98c379;">"50"</span> 
+                            <span style="color: #e06c75;">&lt;glassi-fy</span>
+                            <span style="color: #d19a66;">scale</span>=<span style="color: #98c379;">"50"</span>
                             <span style="color: #d19a66;">blur</span>=<span style="color: #98c379;">"5"</span>
                             <span style="color: #e06c75;">&gt;&lt;/glassi-fy&gt;</span>
                         </div>
                     </div>
                 </div>
 
+                <!-- Step 3: Add Class -->
                 <div class="glass-panel" style="padding: 40px;">
-                    <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">Step 3 - Add Class</h2>
+                    <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
+                        Step 3 - Add Class
+                    </h2>
                     <p style="margin-bottom: 15px;">Apply the <code>.glassify</code> class to any HTML element you want to have the liquid-glass effect.</p>
-                    
+
                     <div class="codespc">
                         <span style="color: #e06c75;">&lt;div</span> <span style="color: #d19a66;">class</span>=<span style="color: #98c379;">"mydiv glassify"</span><span style="color: #e06c75;">&gt;</span><br>
                         &nbsp;&nbsp;Your Element<br>
@@ -260,10 +344,13 @@
                     </div>
                 </div>
 
+                <!-- Step 4: Custom Styling -->
                 <div class="glass-panel" style="padding: 40px;">
-                    <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">Step 4 - Custom Styling</h2>
+                    <h2 style="margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
+                        Step 4 - Custom Styling
+                    </h2>
                     <p style="margin-bottom: 15px;">You can further customize the appearance using standard CSS. You should define dimensions and basic background colors.</p>
-                    
+
                     <div class="codespc">
                         <span style="color: #c678dd;">.mydiv</span> {<br>
                         &nbsp;&nbsp;<span style="color: #e06c75;">width</span>: <span style="color: #d19a66;">300px</span>;<br>
@@ -278,13 +365,17 @@
         </div>
         <br>
     </section>
-    
+
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
+            <!-- Brand Info -->
             <div class="footer-brand">
                 <h2>GlassiFy</h2>
-                <p>A lightweight, high-performance liquid glass effect library for modern web interfaces.</p>
+                <p>An open-source, lightweight and high-performance liquid glass effect library for modern web interfaces.</p>
             </div>
+
+            <!-- Navigation Links -->
             <div class="footer-links">
                 <h3>Navigation</h3>
                 <ul>
@@ -293,6 +384,8 @@
                     <li><a href="#" onclick="switchTab('docs'); return false;">Documentation</a></li>
                 </ul>
             </div>
+
+            <!-- Social Links -->
             <div class="footer-links">
                 <h3>Connect</h3>
                 <ul>
@@ -302,13 +395,16 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Copyright -->
         <div class="footer-bottom">
             <p>&copy; 2025 Saviru Kashmira Atapattu. MIT License. Built with GlassiFy.</p>
         </div>
     </footer>
 
-    <script src="Demo/glassifydev.js"></script>
-    <script src="Demo/index.js"></script>
-    <script src="Demo/buttons.js"></script>
+    <!-- Scripts -->
+    <script src="demo/glassifydev.js"></script>
+    <script src="demo/index.js"></script>
+    <script src="demo/buttons.js"></script>
 </body>
 </html>

@@ -1,3 +1,27 @@
+/*
+ ____    ___                                ____                  ___         __     
+/\  _`\ /\_ \                            __/\  _`\              /'___`\     /'__`\   
+\ \ \L\_\//\ \      __      ____    ____/\_\ \ \L\_\__  __     /\_\ /\ \   /\ \/\ \  
+ \ \ \L_L \ \ \   /'__`\   /',__\  /',__\/\ \ \  _\/\ \/\ \    \/_/// /__  \ \ \ \ \ 
+  \ \ \/, \\_\ \_/\ \L\.\_/\__, `\/\__, `\ \ \ \ \/\ \ \_\ \      // /_\ \__\ \ \_\ \
+   \ \____//\____\ \__/.\_\/\____/\/\____/\ \_\ \_\ \/`____ \    /\______/\_\\ \____/
+    \/___/ \/____/\/__/\/_/\/___/  \/___/  \/_/\/_/  `/___/> \   \/_____/\/_/ \/___/ 
+                                                        /\___/                       
+                                                        \/__/                     
+
+
+GlassiFy 2.0.2511 - https://glassify.saviru.me
+===========================================================
+An open-source and a lightweight Web Component for creating liquid glass effects with dynamic displacement.
+================================================
+*/
+
+
+// © 2025 Saviru Kashmira Atapattu. MIT License.
+// Website: https://saviru.me
+// GitHub: https://github.com/saviru
+
+
 const buttons = document.querySelectorAll(".mainBtns");
 
 buttons.forEach(button => {
