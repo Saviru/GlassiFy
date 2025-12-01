@@ -1,3 +1,5 @@
+// GlassiFy 2.0.2511
+
 class GlassiFy extends HTMLElement {
     constructor() {
         super();
