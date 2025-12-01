@@ -26,8 +26,8 @@
 It works natively with the DOM, requiring **NO** frameworks (React, Vue, Angular compatible), and is designed to be fully responsive and touch-friendly.
 
 <center>
-<img style="border-radius: 16px;height:250px" src="Demo/Samples/nature.png" alt="GlassiFy Nature Sample">
-<img style="border-radius: 16px;height:250px" src="Demo/Samples/city.png" alt="GlassiFy Nature Sample">
+<img style="border-radius: 16px;height:250px" src="demo/samples/nature.png" alt="GlassiFy Nature Sample">
+<img style="border-radius: 16px;height:250px" src="demo/samples/city.png" alt="GlassiFy Nature Sample">
 </center>
 
 ### Features
