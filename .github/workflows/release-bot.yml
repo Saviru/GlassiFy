@@ -103,7 +103,8 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Archive binaries and info for release ${{ env.VERSION }}"
+            git commit -m "Release Version ${{ env.VERSION }}" \
+              -m "Co-authored-by: Saviru <savirukashmira@gmail.com>"
             git pull origin main --rebase
             git push origin main
           fi
