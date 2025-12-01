@@ -12,7 +12,7 @@
 
 GlassiFy 2.0.2511 - https://glassify.saviru.me
 ===========================================================
-An open-source and a lightweight Web Component for creating glassmorphism effects with dynamic displacement.
+An open-source and a lightweight Web Component for creating liquid glass effects with dynamic displacement.
 ================================================
 */
 
