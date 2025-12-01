@@ -179,6 +179,7 @@ body.light-mode .feature-card:hover { background: rgba(0,0,0,0.03); }
     .playground-container { height: 400px; }
     .draggable { transform: scale(0.8); }
     .glbox, .gledu, .glsqu { display: none; }
+    #btnArea {justify-content: center;}
 }
 
 .gledu {
