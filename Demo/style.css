@@ -86,6 +86,15 @@ body.light-mode .nav-btn.active { text-shadow: 0 0 10px rgba(0,0,0,0.1); }
 .github-icon { font-size: 1.2rem; color: var(--text-main); text-decoration: none; transition: color 0.3s;}
 .github-icon:hover { color: var(--primary); }
 
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+}
 
 .page-section {
     display: none;
@@ -116,7 +125,7 @@ body.light-mode .nav-btn.active { text-shadow: 0 0 10px rgba(0,0,0,0.1); }
 .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; background: linear-gradient(to right, var(--text-main), #a5b4fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .hero p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px; max-width: 500px; }
 
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 50px; }
+.features-grid { display: flex; flex-direction: column; gap: 20px; margin-top: 50px; }
 .feature-card { padding: 30px; transition: transform 0.3s; }
 .feature-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.08); }
 body.light-mode .feature-card:hover { background: rgba(0,0,0,0.03); }
@@ -173,12 +182,65 @@ body.light-mode .feature-card:hover { background: rgba(0,0,0,0.03); }
     pointer-events: none; text-transform: uppercase;
 }
 @media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+        padding: 15px 20px;
+        border-radius: 20px;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .logo {
+        flex: 1;
+    }
+    
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        padding-top: 0;
+        margin-top: 0;
+        border-top: 1px solid transparent;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease, opacity 0.3s ease, padding-top 0.3s ease, margin-top 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .nav-links.active {
+        max-height: 400px;
+        opacity: 1;
+        padding-top: 20px;
+        margin-top: 15px;
+        border-top-color: var(--glass-border);
+    }
+    
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        padding: 12px;
+    }
+    
+    .github-icon {
+        display: block;
+        padding: 12px;
+    }
+
+    /* Existing styles */
     .hero-grid { grid-template-columns: 1fr; text-align: center; }
     .hero h1 { font-size: 2.5rem; }
     .hero p { margin: 0 auto 30px; }
     .playground-container { height: 400px; }
     .draggable { transform: scale(0.8); }
     .glbox, .gledu, .glsqu { display: none; }
+    #btnArea {justify-content: center;}
 }
 
 .gledu {
@@ -457,6 +519,49 @@ footer {
     border-radius: 4px;
     color: #e06c75;
     font-size: 0.85rem;
+}
+
+@media screen and (max-width: 768px) {
+    .docs-table {
+        display: block;
+    }
+
+    .docs-table thead {
+        display: none;
+    }
+
+    .docs-table,
+    .docs-table tbody,
+    .docs-table tr,
+    .docs-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .docs-table tr {
+        margin-bottom: 15px;
+    }
+
+    .docs-table td {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        text-align: left;
+    }
+
+    .docs-table td:last-child {
+        border-bottom: 2px solid var(--text-main);
+    }
+
+    .docs-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--primary);
+        flex-basis: 40%;
+        text-align: left;
+        padding-right: 0.5em;
+    }
+    
 }
 
 .codespc {background: var(--code-spc); padding: 15px; border-radius: 8px; font-family: 'Fira Code', monospace; overflow-x: auto; margin-top: 5px;}

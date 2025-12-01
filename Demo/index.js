@@ -101,3 +101,30 @@ function toggleTheme() {
       icon.classList.add('fa-sun');
   }
 }
+
+// Mobile Menu Functions
+function toggleMobileMenu() {
+    const navLinks = document.getElementById('navLinks');
+    const menuToggle = document.getElementById('menuToggle');
+    const icon = menuToggle.querySelector('i');
+    
+    navLinks.classList.toggle('active');
+    
+    if (navLinks.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
+}
+
+function closeMobileMenu() {
+    const navLinks = document.getElementById('navLinks');
+    const menuToggle = document.getElementById('menuToggle');
+    const icon = menuToggle.querySelector('i');
+    
+    navLinks.classList.remove('active');
+    icon.classList.remove('fa-times');
+    icon.classList.add('fa-bars');
+}
