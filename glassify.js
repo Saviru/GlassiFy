@@ -1,4 +1,27 @@
-// GlassiFy 2.0.2511
+/*
+ ____    ___                                ____                  ___         __     
+/\  _`\ /\_ \                            __/\  _`\              /'___`\     /'__`\   
+\ \ \L\_\//\ \      __      ____    ____/\_\ \ \L\_\__  __     /\_\ /\ \   /\ \/\ \  
+ \ \ \L_L \ \ \   /'__`\   /',__\  /',__\/\ \ \  _\/\ \/\ \    \/_/// /__  \ \ \ \ \ 
+  \ \ \/, \\_\ \_/\ \L\.\_/\__, `\/\__, `\ \ \ \ \/\ \ \_\ \      // /_\ \__\ \ \_\ \
+   \ \____//\____\ \__/.\_\/\____/\/\____/\ \_\ \_\ \/`____ \    /\______/\_\\ \____/
+    \/___/ \/____/\/__/\/_/\/___/  \/___/  \/_/\/_/  `/___/> \   \/_____/\/_/ \/___/ 
+                                                        /\___/                       
+                                                        \/__/                     
+
+
+GlassiFy 2.0.2511 - https://glassify.saviru.me
+===========================================================
+An open-source and a lightweight Web Component for creating glassmorphism effects with dynamic displacement.
+================================================
+*/
+
+
+// © 2025 Saviru Kashmira Atapattu. MIT License.
+// Website: https://saviru.me
+// GitHub: https://github.com/saviru
+
+
 
 class GlassiFy extends HTMLElement {
     constructor() {
@@ -6,23 +29,29 @@ class GlassiFy extends HTMLElement {
         const shadow = this.attachShadow({mode: 'open'});
         const wrapper = document.createElement('div');
 
+        // Finds GlassiFy mode
         const mode = this.getAttribute('mode') || 'default';
         const isMode = mode === 'super'
 
+        // Attributes for Super Mode
         const freq = parseFloat(this.getAttribute('frequency')) || 0.01;
         const octaves = parseInt(this.getAttribute('octaves')) || 3;
         
+        // Attributes for Default/Both Modes
         const scale = parseInt(this.getAttribute('scale')) || (isMode ? 45 : 300);
         const blur = parseInt(this.getAttribute('blur')) || (isMode ? 4 : 5);
         const brightness = parseFloat(this.getAttribute('brightness')) || (isMode ? 1 : 1);
 
+        // Adds a comment inside the `glassi-fi` element
         wrapper.innerHTML = `
             <!-- GlassiFy Component -->
         `;
 
+        // Creates base SVG
         const svg = document.createElement('div');
         svg.style.display = 'none';
         
+        // Defines SVG filters based on mode
         if (mode === 'super') {
             svg.innerHTML = `
                 <svg style="display: none;">
@@ -44,6 +73,7 @@ class GlassiFy extends HTMLElement {
                 </svg>`;
         }
 
+        // Defines GlassiFy styles
         const style = document.createElement('style');
         style.textContent = `
 .glassify{border:#d1d1d170 solid 1px;filter:drop-shadow(-8px -10px 46px #d1d1d152);box-shadow:inset 3px 3px 3px -1px #ffffff50, inset -3px -3px 3px -1px #44444469;backdrop-filter:brightness(${brightness}) blur(${blur}px) url(#displacementFilter);}glassi-fi{display: none;}
@@ -55,6 +85,7 @@ class GlassiFy extends HTMLElement {
     }
 }
 
+// Renders new GlassiFy element
 customElements.define('glassi-fy', GlassiFy);
 
 
