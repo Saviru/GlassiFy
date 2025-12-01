@@ -35,10 +35,14 @@
             </div>
         </div>
         
-        <ul class="nav-links">
-            <li><button class="nav-btn active" onclick="switchTab('home')" id="btn-home">Home</button></li>
-            <li><button class="nav-btn" onclick="switchTab('demo')" id="btn-demo">Demo</button></li>
-            <li><button class="nav-btn" onclick="switchTab('docs')" id="btn-docs">Docs</button></li>
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><button class="nav-btn active" onclick="switchTab('home'); closeMobileMenu();" id="btn-home">Home</button></li>
+            <li><button class="nav-btn" onclick="switchTab('demo'); closeMobileMenu();" id="btn-demo">Demo</button></li>
+            <li><button class="nav-btn" onclick="switchTab('docs'); closeMobileMenu();" id="btn-docs">Docs</button></li>
             <li><button class="nav-btn" id="theme-toggle" onclick="toggleTheme()"><i class="fas fa-sun"></i></button></li>
             <li><a href="https://github.com/Saviru/GlassiFy" class="github-icon" target="_blank"><i class="fab fa-github"></i></a></li>
         </ul>
