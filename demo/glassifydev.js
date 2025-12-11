@@ -38,10 +38,27 @@ svg.innerHTML = `
 `;
 
 
+
+const isFirefox = /Firefox/i.test(navigator.userAgent);
+const isAppleDevice = /iPhone|iPad|iPod|Macintosh|Mac OS X/i.test(navigator.userAgent);
+
 const style = document.createElement('style');
-style.textContent = `
-.glassify{border:#d1d1d170 solid 1px;filter:drop-shadow(-8px -10px 46px #d1d1d152);box-shadow:inset 3px 3px 3px -1px #ffffff50, inset -3px -3px 3px -1px #44444469;backdrop-filter:brightness(1) blur(5px) url(#displacementFilter);}glassi-fi{display: none;}
-`;
+
+const toggleBtn = document.getElementById('modeSwitch');
+const toggleLabel = document.querySelector('.status-text');
+
+if(isFirefox || isAppleDevice) {
+    toggleBtn.disabled = true;
+    toggleLabel.textContent = "Unsupported";
+    style.textContent = `
+    .glassify{border:#d1d1d170 solid 1px;filter:drop-shadow(-8px -10px 46px #d1d1d152) url(#displacementFilter);box-shadow:inset 3px 3px 3px -1px #ffffff50, inset -3px -3px 3px -1px #44444469;backdrop-filter:brightness(1) blur(5px);-webkit-backdrop-filter:brightness(1) blur(5px);}glassi-fi{display: none;}
+    `;
+} else {
+    style.textContent = `
+    .glassify{border:#d1d1d170 solid 1px;filter:drop-shadow(-8px -10px 46px #d1d1d152);box-shadow:inset 3px 3px 3px -1px #ffffff50, inset -3px -3px 3px -1px #44444469;backdrop-filter:brightness(1) blur(5px) url(#displacementFilter);}glassi-fi{display: none;}
+    `;
+}
+
 
 document.head.appendChild(style);
 document.body.appendChild(svg);
