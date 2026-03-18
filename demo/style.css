@@ -136,6 +136,7 @@ nav {
     z-index: 1000;
     border-radius: 50px;
     transition: background var(--transition-speed), border-color var(--transition-speed);
+    
 }
 
 .logo {
@@ -312,11 +313,13 @@ body.light-mode .nav-btn.active {
     gap: 20px;
     margin-top: 50px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .feature-card {
     padding: 30px;
     transition: transform 0.3s;
+    max-width: 20rem;
 }
 
 .feature-card:hover {

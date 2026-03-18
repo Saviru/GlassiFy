@@ -40,7 +40,7 @@ class GlassiFy extends HTMLElement {
         // Attributes for Default/Both Modes
         const scale = parseInt(this.getAttribute('scale')) || (isMode ? 45 : 300);
         const blur = parseInt(this.getAttribute('blur')) || (isMode ? 4 : 5);
-        const brightness = parseFloat(this.getAttribute('brightness')) || (isMode ? 1 : 1);
+        const brightness = parseFloat(this.getAttribute('brightness')) || 1;
 
         // Adds a comment inside the `glassi-fi` element
         wrapper.innerHTML = `
