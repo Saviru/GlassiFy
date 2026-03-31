@@ -43,7 +43,6 @@ GitHub: https://github.com/saviru
     text-decoration: none;
     color: var(--text-main);
     background: linear-gradient(var(--gradient-angle), var(--primary), #34003f, var(--secondary));
-    padding: 10px 20px;
     border-radius: 10px;
     font-size: large;
     cursor: pointer;
